@@ -149,6 +149,16 @@ th,
   min-width: 0;
 }
 
+.banner {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin-bottom: 24px;
+  border: none;
+  border-radius: 0;
+  opacity: 0.95;
+}
+
 .doc-head,
 .section {
   border: 1px solid var(--line);
