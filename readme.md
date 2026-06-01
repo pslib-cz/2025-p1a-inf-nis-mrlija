@@ -1,8 +1,11 @@
 <a id="home"></a>
 
-<br />
+# [PetRescue](https://pslib-cz.github.io/2025-p1a-inf-nis-mrlija)
+
 <div align="center">
-  <img src="assets/banner.png" alt="Banner"/>
+  <a href="https://pslib-cz.github.io/2025-p1a-inf-nis-mrlija">
+    <img src="assets/banner.png" alt="Banner"/>
+  </a>
 </div>
 
 ## Použité umělé inteligence
