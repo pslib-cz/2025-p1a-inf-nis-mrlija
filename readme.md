@@ -4,7 +4,7 @@
 
 <div align="center">
   <a href="https://pslib-cz.github.io/2025-p1a-inf-nis-mrlija">
-    <img src="assets/banner.png" alt="Banner"/>
+    <img src="docs/assets/banner.png" alt="Banner"/>
   </a>
 </div>
 
