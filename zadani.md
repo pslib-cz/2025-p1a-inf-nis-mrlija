@@ -19,5 +19,5 @@ Během měsíce máte navrhnout a zdokumentovat "váš" informační systém. O�
 ## Termíny
 
 - [x] koncept projektu (téma a perex v README.md): do 27.5.
-- [ ] kompletně zpracovaný katalog požadavků (MarkDown): do 3.6.
-- [ ] vytvořené výsledné diagramy (SVG nebo draw.io): do 10.6.
+- [x] kompletně zpracovaný katalog požadavků (MarkDown): do 3.6.
+- [] vytvořené výsledné diagramy (SVG nebo draw.io): do 10.6.

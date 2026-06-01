@@ -45,3 +45,106 @@ Systém je určen především zaměstnancům a dobrovolníkům zvířecích út
 </div>
 
 <p align="right">(<a href="#home">zpět na začátek</a>)</p>
+
+## ER diagramy
+
+Níže jsou dva návrhy ER diagramu pro systém PetRescue — přehledový diagram a detailní diagram s atributy.
+
+### Přehledový ER diagram
+
+```mermaid
+erDiagram
+    SHELTER ||--o{ PET : houses
+    PET }o--|| SPECIES : is_of
+    USER ||--o{ ADOPTION_REQUEST : submits
+    PET ||--o{ ADOPTION_REQUEST : requested_for
+    PET ||--o{ MEDICAL_RECORD : has
+    PET ||--o{ PHOTO : has
+    VOLUNTEER }o--|| SHELTER : works_at
+    STAFF }o--|| SHELTER : employed_at
+```
+
+### Detailní ER diagram (atributy)
+
+```mermaid
+erDiagram
+    SHELTER {
+      uuid id PK
+      string name
+      string address
+      string contact_email
+    }
+
+    PET {
+      uuid id PK
+      string name
+      date birthdate
+      string gender
+      string status
+      uuid shelter_id FK
+      uuid species_id FK
+    }
+
+    SPECIES {
+      uuid id PK
+      string common_name
+      string breed
+    }
+
+    USER {
+      uuid id PK
+      string full_name
+      string email
+      string phone
+      string role
+    }
+
+    ADOPTION_REQUEST {
+      uuid id PK
+      uuid user_id FK
+      uuid pet_id FK
+      date requested_at
+      string status
+      text message
+    }
+
+    MEDICAL_RECORD {
+      uuid id PK
+      uuid pet_id FK
+      date record_date
+      string description
+      boolean vaccinated
+    }
+
+    PHOTO {
+      uuid id PK
+      uuid pet_id FK
+      string url
+      string caption
+    }
+
+    VOLUNTEER {
+      uuid id PK
+      uuid user_id FK
+      date start_date
+    }
+
+    STAFF {
+      uuid id PK
+      uuid user_id FK
+      string position
+    }
+
+    %% Vztahy
+    SHELTER ||--o{ PET : houses
+    PET }o--|| SPECIES : is_of
+    USER ||--o{ ADOPTION_REQUEST : submits
+    PET ||--o{ ADOPTION_REQUEST : requested_for
+    PET ||--o{ MEDICAL_RECORD : has
+    PET ||--o{ PHOTO : has
+    VOLUNTEER }o--|| SHELTER : works_at
+    STAFF }o--|| SHELTER : employed_at
+    VOLUNTEER ||--o{ PET : cares_for
+```
+
+Pokud chcete exporty do SVG/PNG nebo další rozšíření (např. separátní diagram pro workflow adopce), dejte vědět a doplním je.
