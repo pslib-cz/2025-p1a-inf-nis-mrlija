@@ -5,21 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PetRescue</title>
     <link rel="stylesheet" href="./style.css" />
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
-    ></script>
-    <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        if (window.mermaid) {
-          mermaid.initialize({
-            startOnLoad: true,
-            theme: "dark",
-            securityLevel: "loose",
-          });
-        }
-      });
-    </script>
   </head>
   <body>
     <div class="layout" id="home">
@@ -90,102 +75,18 @@
           <p>Níže jsou dva návrhy ER diagramu pro systém PetRescue.</p>
 
           <h4>Přehledový ER diagram</h4>
-
-          <!-- prettier-ignore -->
-          <div class="diagram mermaid">
-            erDiagram
-              SHELTER ||--o{ PET : houses
-              PET }o--|| SPECIES : is_of
-              USER ||--o{ ADOPTION_REQUEST : submits
-              PET ||--o{ ADOPTION_REQUEST : requested_for
-              PET ||--o{ MEDICAL_RECORD : has
-              PET ||--o{ PHOTO : has
-              VOLUNTEER }o--|| SHELTER : works_at
-              STAFF }o--|| SHELTER : employed_at
-          </div>
+          <img
+            src="./er-overview.svg"
+            alt="Přehledový ER diagram"
+            class="diagram-svg"
+          />
 
           <h4>Detailní ER diagram</h4>
-
-          <!-- prettier-ignore -->
-          <div class="diagram mermaid">
-            erDiagram
-                SHELTER {
-                  uuid id PK
-                  string name
-                  string address
-                  string contact_email
-                }
-              
-                PET {
-                  uuid id PK
-                  string name
-                  date birthdate
-                  string gender
-                  string status
-                  uuid shelter_id FK
-                  uuid species_id FK
-                }
-              
-                SPECIES {
-                  uuid id PK
-                  string common_name
-                  string breed
-                }
-              
-                USER {
-                  uuid id PK
-                  string full_name
-                  string email
-                  string phone
-                  string role
-                }
-              
-                ADOPTION_REQUEST {
-                  uuid id PK
-                  uuid user_id FK
-                  uuid pet_id FK
-                  date requested_at
-                  string status
-                  text message
-                }
-              
-                MEDICAL_RECORD {
-                  uuid id PK
-                  uuid pet_id FK
-                  date record_date
-                  string description
-                  boolean vaccinated
-                }
-              
-                PHOTO {
-                  uuid id PK
-                  uuid pet_id FK
-                  string url
-                  string caption
-                }
-              
-                VOLUNTEER {
-                  uuid id PK
-                  uuid user_id FK
-                  date start_date
-                }
-              
-                STAFF {
-                  uuid id PK
-                  uuid user_id FK
-                  string position
-                }
-              
-                SHELTER ||--o{ PET : houses
-                PET }o--|| SPECIES : is_of
-                USER ||--o{ ADOPTION_REQUEST : submits
-                PET ||--o{ ADOPTION_REQUEST : requested_for
-                PET ||--o{ MEDICAL_RECORD : has
-                PET ||--o{ PHOTO : has
-                VOLUNTEER }o--|| SHELTER : works_at
-                STAFF }o--|| SHELTER : employed_at
-                VOLUNTEER ||--o{ PET : cares_for
-          </div>
+          <img
+            src="./er-detailed.svg"
+            alt="Detailní ER diagram"
+            class="diagram-svg"
+          />
         </section>
 
         <section class="section" id="pozadavky">

@@ -253,6 +253,16 @@ th,
   background: var(--surface-alt);
 }
 
+.diagram-svg {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin: 12px 0 18px;
+  border: 1px solid var(--line);
+  background: var(--surface-alt);
+  padding: 16px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
