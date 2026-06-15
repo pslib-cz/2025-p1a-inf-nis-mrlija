@@ -1,0 +1,50 @@
+@startuml
+title Use Cases — Funkční požadavky (FR)
+
+actor "Veřejnost / Žadatel" as Guest
+actor "Registrovaný uživatel" as User
+actor "Dobrovolník" as Volunteer
+actor "Staff" as Staff
+actor "Administrátor" as Admin
+
+package "FR" {
+  usecase "Prohlížet katalog zvířat" as UC_ViewPets
+  usecase "Vyhledávat a filtrovat zvířata" as UC_SearchPets
+  usecase "Zobrazit detail zvířete" as UC_PetDetail
+  usecase "Registrovat se a ověřit email" as UC_Register
+  usecase "Přihlásit se" as UC_Login
+  usecase "Přidat / upravit zvíře" as UC_ManagePet
+  usecase "Nahrát fotografie" as UC_UploadPhotos
+  usecase "Přidat zdravotní záznam" as UC_AddMedical
+  usecase "Podat žádost o adopci" as UC_SubmitRequest
+  usecase "Zpracovat žádost" as UC_ProcessRequest
+  usecase "Spravovat role a uživatele" as UC_ManageUsers
+  usecase "Exportovat CSV" as UC_ExportCSV
+}
+
+Guest --> UC_ViewPets
+Guest --> UC_SearchPets
+Guest --> UC_PetDetail
+
+User --> UC_Register
+User --> UC_Login
+User --> UC_SubmitRequest
+User --> UC_PetDetail
+
+Volunteer --> UC_ManagePet
+Volunteer --> UC_UploadPhotos
+Volunteer --> UC_AddMedical
+Volunteer --> UC_PetDetail
+
+Staff --> UC_ManagePet
+Staff --> UC_AddMedical
+Staff --> UC_ProcessRequest
+Staff --> UC_ExportCSV
+
+Admin --> UC_ManageUsers
+Admin --> UC_ManagePet
+
+UC_SubmitRequest .> UC_PetDetail : "využívá"
+UC_ProcessRequest .> UC_SubmitRequest : "pracuje s"
+
+@enduml

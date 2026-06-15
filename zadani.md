@@ -1,4 +1,4 @@
-# Zadání projektu NIS
+ # Zadání projektu NIS
 
 Během měsíce máte navrhnout a zdokumentovat "váš" informační systém. Očekává se maximální zapojení vaší inteligence, vaší kreativity, vaší logiky a vybrané LLM AI. Čerpejte ze struktury hodin Technické dokumentace s panem Erlebachem.
 

@@ -1,0 +1,20 @@
+@startuml
+title Use Cases — Deployment (NFR)
+
+actor "Administrátor" as Admin
+
+package "Deployment" {
+  usecase "Nasazení / Deployment (orchestrace / VM)" as NFR_Deployment
+  usecase "CI/CD pipeline" as NFR_CICD
+  usecase "Konfigurace & tajemství (Secrets)" as NFR_Secrets
+  usecase "Rollback a zotavení" as NFR_Rollback
+  usecase "Škálovatelnost nasazení" as NFR_Scalability
+}
+
+Admin -down-> NFR_Deployment
+Admin -down-> NFR_CICD
+Admin -down-> NFR_Secrets
+Admin -down-> NFR_Rollback
+Admin -down-> NFR_Scalability
+
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+title Use Case Diagram - Systém správy (příklad)
+
+actor "Uživatel" as User
+actor "Správce" as Admin
+
+package "Systém" {
+  usecase "Přihlásit se" as UC_Login
+  usecase "Zaregistrovat se" as UC_Register
+  usecase "Prohlížet data" as UC_View
+  usecase "Spravovat uživatele" as UC_ManageUsers
+  usecase "Generovat report" as UC_Report
+}
+
+User --> UC_Register
+User --> UC_Login
+User --> UC_View
+
+Admin --> UC_Login
+Admin --> UC_ManageUsers
+Admin --> UC_Report
+
+UC_ManageUsers .> UC_View : "používá"
+UC_Report .> UC_View : "závisí na"
+
+@enduml

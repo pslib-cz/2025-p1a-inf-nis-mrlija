@@ -50,6 +50,21 @@ PetRescue umožní: registraci útulků a uživatelů, správu profilů zvířat
 - NFR-05: Ochrana osobních údajů — shoda s GDPR (úprava a mazání osobních údajů po požadavku).
 - NFR-06: Zálohování — pravidelné zálohy databáze (denní snapshoty) a obnova do 24 hodin.
 - NFR-07: Přístupnost — základní WCAG kompatibilita pro veřejné stránky.
+- NFR-08: Deployment — systém bude nasaditelný pomocí kontejnerů (Docker) a podporovat orchestrace (např. Kubernetes) pro produkční provoz.
+
+- NFR-09: Automatizace nasazení — bude zřízena CI/CD pipeline (GitHub Actions/GitLab CI) pro automatické buildy, testy a nasazení do staging/produkcí.
+
+- NFR-10: Konfigurace a tajemství — konfigurace přes proměnné prostředí; citlivá data (API klíče, hesla) uložena v zabezpečeném úložišti (Vault / cloud secrets manager).
+
+- NFR-11: Škálovatelnost nasazení — aplikace musí podporovat horizontální škálování bez výpadku (stateless backend / sdílené úložiště pro stateful části).
+
+- NFR-12: Dostupnost a zotavení — cílová dostupnost 99.9% pro produkční prostředí; automatické restartování a health-checky; plán obnovy po havárii.
+
+- NFR-13: Monitoring a logging — centralizované logování a monitorování (Prometheus + Grafana nebo ELK) s alerty pro klíčové metriky a chybové stavy.
+
+- NFR-14: Bezpečnost nasazení — nasazení přes zabezpečené kanály (TLS), omezení přístupu k produkčnímu prostředí, role-based přístup pro operace nasazení.
+
+- NFR-15: Rollback — schopnost rychlého rollbacku na předchozí verzi při chybném nasazení.
 
 ## 7. Systémové požadavky a omezení
 
@@ -74,11 +89,3 @@ PetRescue umožní: registraci útulků a uživatelů, správu profilů zvířat
 - Hlavní katalog zvířat a detail zvířete jsou dostupné a prohledatelné.
 - Registrovaný uživatel může podat žádost a staff ji vidí v administračním rozhraní.
 - Záznamy o zdravotním stavu lze přidávat a zobrazovat.
-
-## 11. Další kroky
-
-- Vytvořit detailní wireframy administrace a veřejného katalogu.
-- Vygenerovat UML sekvenční diagram workflow adopce.
-- Naplánovat implementační sprinty podle priorit.
-
-Při požadavku mohu tento katalog rozšířit o detailní acceptance tests a datové rozhraní API (endpoints).

@@ -1,0 +1,27 @@
+@startuml
+title Use Cases — Operations (NFR)
+
+actor "Administrátor" as Admin
+actor "Staff" as Staff
+
+package "Operations" {
+  usecase "Zabezpečit komunikaci (HTTPS)" as NFR_Security
+  usecase "Zálohování a obnova" as NFR_Backup
+  usecase "Audit a logování" as NFR_Audit
+  usecase "Export a dostupnost dat" as NFR_Availability
+  usecase "Výkon katalogu" as NFR_Performance
+  usecase "Ochrana osobních údajů (GDPR)" as NFR_Privacy
+  usecase "Monitoring & Logging" as NFR_Monitoring
+}
+
+Admin -down-> NFR_Security
+Admin -down-> NFR_Backup
+Admin -down-> NFR_Audit
+Admin -down-> NFR_Privacy
+Admin -down-> NFR_Monitoring
+
+Staff -down-> NFR_Monitoring
+Staff -down-> NFR_Availability
+Staff -down-> NFR_Performance
+
+@enduml

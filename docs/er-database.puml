@@ -1,0 +1,96 @@
+@startuml
+title ER Database
+
+entity SHELTER {
+	* id : uuid <<PK>>
+	name : varchar
+	address : varchar
+	contact_email : varchar
+	phone : varchar
+}
+
+entity SPECIES {
+	* id : uuid <<PK>>
+	common_name : varchar
+	scientific_name : varchar
+	breed : varchar
+}
+
+entity PET {
+	* id : uuid <<PK>>
+	name : varchar
+	birth_date : date
+	sex : enum {M, F, U}
+	status : enum {available, adopted, fostered, pending}
+	shelter_id : uuid <<FK>>
+	species_id : uuid <<FK>>
+}
+
+entity PERSON {
+	* id : uuid <<PK>>
+	full_name : varchar
+	email : varchar
+	phone : varchar
+	role : enum {applicant, volunteer, staff}
+}
+
+entity ADOPTION_REQUEST {
+	* id : uuid <<PK>>
+	requester_id : uuid <<FK>>
+	pet_id : uuid <<FK>>
+	requested_at : datetime
+	status : enum {draft, submitted, approved, rejected}
+	message : text
+}
+
+entity MEDICAL_RECORD {
+	* id : uuid <<PK>>
+	pet_id : uuid <<FK>>
+	record_date : date
+	description : text
+	vaccinated : boolean
+	vet_name : varchar
+}
+
+entity PHOTO {
+	* id : uuid <<PK>>
+	pet_id : uuid <<FK>>
+	url : varchar
+	caption : varchar
+	uploaded_at : datetime
+}
+
+entity VOLUNTEER_ASSIGNMENT {
+	* id : uuid <<PK>>
+	volunteer_id : uuid <<FK>>
+	shelter_id : uuid <<FK>>
+	start_date : date
+	end_date : date
+}
+
+entity STAFF_ASSIGNMENT {
+	* id : uuid <<PK>>
+	staff_id : uuid <<FK>>
+	shelter_id : uuid <<FK>>
+	position : varchar
+	start_date : date
+}
+
+SHELTER ||--o{ PET : houses
+PET }o--|| SPECIES : is_of
+PERSON ||--o{ ADOPTION_REQUEST : submits
+PET ||--o{ ADOPTION_REQUEST : requested_for
+PET ||--o{ MEDICAL_RECORD : has
+PET ||--o{ PHOTO : has
+PERSON ||--o{ VOLUNTEER_ASSIGNMENT : assigned_as
+SHELTER ||--o{ VOLUNTEER_ASSIGNMENT : has_volunteers
+PERSON ||--o{ STAFF_ASSIGNMENT : employed_as
+SHELTER ||--o{ STAFF_ASSIGNMENT : employs
+
+note left of PET
+	PK = primary key
+	FK = foreign key
+	Use UUIDs for portability
+end note
+
+@enduml
